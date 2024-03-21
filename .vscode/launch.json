@@ -1,0 +1,57 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "ej1",
+            "request": "launch",
+            "mainClass": "ejercicio1.ej1",
+            "projectName": "AyED2024_a44b8857"
+        },
+        {
+            "type": "java",
+            "name": "ej2",
+            "request": "launch",
+            "mainClass": "ejercicio2.ej2",
+            "projectName": "AyED2024_a44b8857"
+        },
+        {
+            "type": "java",
+            "name": "Test",
+            "request": "launch",
+            "mainClass": "ejercicio3.Test",
+            "projectName": "AyED2024_a44b8857"
+        },
+        {
+            "type": "java",
+            "name": "SwapValores",
+            "request": "launch",
+            "mainClass": "ejercicio4.SwapValores",
+            "projectName": "AyED2024_a44b8857"
+        },
+        {
+            "type": "java",
+            "name": "App",
+            "request": "launch",
+            "mainClass": "ejercicio5.App",
+            "projectName": "AyED2024_a44b8857"
+        },
+        {
+            "type": "java",
+            "name": "TestArrayList",
+            "request": "launch",
+            "mainClass": "ejercicio7.TestArrayList",
+            "projectName": "AyED2024_a44b8857",
+            "args": "10 20 30 40 50"
+        }
+    ]
+}
