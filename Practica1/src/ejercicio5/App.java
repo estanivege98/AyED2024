@@ -18,30 +18,28 @@ public class App {
         return ("Minimo: " + min + " Maximo: " + max +" Promedio: " + prom);
     }
     
-    public static String calculoB(List<Integer> lN){
-        int max = -1, min = 999999, prom, suma = 0;
-        for(int numero : lN){
-            if (numero > max){
-                max = numero;
+    public static void calculoB(IncisoB o, int[] vN){
+        o.setMax(-1);
+        o.setMin(9999);
+        int suma = 0;
+        for (int i=0; i<vN.length; i++){
+            if (vN[i]<o.getMin()){
+                o.setMin(vN[i]);
             }
-            if (numero < min) {
-                min = numero;
+            if (vN[i]>o.getMax()){
+                o.setMax(vN[i]);
             }
-            suma += numero;
+            suma+=vN[i];
         }
-        prom = suma / 4;
-        return ("Minimo: " + min + " Maximo: " + max +" Promedio: " + prom);
+        o.setProm(suma / vN.length);
     } 
     
     public static void main(String[] args){
         int[] vecNum = {2, 4, 6, 8};
         System.out.println(calculoA(vecNum));
-        List<Integer> listaNum = new ArrayList<Integer>();
-        listaNum.add(2);
-        listaNum.add(4);
-        listaNum.add(6);
-        listaNum.add(8);
-        System.out.println(calculoB(listaNum));
+        IncisoB objecto = new IncisoB();
+        calculoB(objecto, vecNum);
+        System.out.println(objecto.impresion());
     }
     
 
