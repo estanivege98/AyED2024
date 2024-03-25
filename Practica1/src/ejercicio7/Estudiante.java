@@ -34,7 +34,7 @@ public class Estudiante {
     public void setNombre(String nombre){
         this.nombre = nombre;
     }
-    public void setApellid(String apellido){
+    public void setApellido(String apellido){
         this.apellido = apellido;
     }
     public void setComision(String comision){
