@@ -31,6 +31,22 @@ public class Estudiante {
         return direccion;
     }
 
+    public void setNombre(String nombre){
+        this.nombre = nombre;
+    }
+    public void setApellid(String apellido){
+        this.apellido = apellido;
+    }
+    public void setComision(String comision){
+        this.comision = comision; 
+    }
+    public void setDireccion(String direccion){
+        this.direccion = direccion;
+    }
+    public void setMail(String mail){
+        this.mail = mail;
+    }
+
     public String tusDatos(){
         return ("Nombre: " + this.getNombre() + " Apellido: " + this.getApellido() + " E-Mail: " + this.getMail() + " direccion: " + this.getDireccion() + " Comision: " + this.getComision());
     }
