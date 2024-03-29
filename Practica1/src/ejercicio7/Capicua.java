@@ -18,6 +18,20 @@ public class Capicua{
         }
         return ok;
     }
+    private static boolean comprobar(ArrayList<Integer> lista, Integer pri, Integer ult){
+        boolean ok = true;
+        if(pri < ult){
+            if(lista.get(pri).equals(lista.get(ult))) ok = comprobar(lista, ++pri, --ult);
+        }
+        else ok = false;
+        return ok;
+    }
+    public static boolean esCapicuaRec(ArrayList<Integer> lista){
+        if(!lista.isEmpty() && lista.size() > 1){
+            return comprobar(lista, 0, lista.size()-1);
+        }
+        else return false;
+    }
 
     public static void main (String[] args){
         ArrayList<Integer> lista = new ArrayList<Integer>();
@@ -29,6 +43,9 @@ public class Capicua{
 
         if(esCapicuaA(lista)){
             System.out.println("Es Capicua (Metodo A)");
+        }
+        if(esCapicuaRec(lista)){
+            System.out.println("Es Capicua (Metodo B)");
         }
         
     }
