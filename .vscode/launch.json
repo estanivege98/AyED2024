@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "SumarLista",
+            "request": "launch",
+            "mainClass": "ejercicio7.SumarLista",
+            "projectName": "AyED2024_4d257b3e"
+        },
+        {
+            "type": "java",
             "name": "InvertirLista",
             "request": "launch",
             "mainClass": "ejercicio7.InvertirLista",
