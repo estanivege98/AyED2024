@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Programa",
+            "request": "launch",
+            "mainClass": "ejercicio1y2.Programa",
+            "projectName": "AyED2024_4d257b3e"
+        },
+        {
+            "type": "java",
+            "name": "CombinarOrdenado",
+            "request": "launch",
+            "mainClass": "ejercicio7.CombinarOrdenado",
+            "projectName": "AyED2024_4d257b3e"
+        },
+        {
+            "type": "java",
             "name": "SumarLista",
             "request": "launch",
             "mainClass": "ejercicio7.SumarLista",
