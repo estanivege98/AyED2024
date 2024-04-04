@@ -9,6 +9,13 @@
             "name": "Programa",
             "request": "launch",
             "mainClass": "ejercicio1y2.Programa",
+            "projectName": "AyED2024_a44b8857"
+        },
+        {
+            "type": "java",
+            "name": "Programa",
+            "request": "launch",
+            "mainClass": "ejercicio1y2.Programa",
             "projectName": "AyED2024_4d257b3e"
         },
         {

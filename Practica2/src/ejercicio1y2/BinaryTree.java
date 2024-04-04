@@ -110,6 +110,20 @@ public class BinaryTree <T> {
  	    return arbolEspejo;
     }
 
+	public void espejo2(){
+		BinaryTree<T> aux;
+		aux = this.getRightChild();
+		this.addRightChild(this.getLeftChild());
+		this.addLeftChild(aux);
+		if(this.hasLeftChild()){
+			this.getRightChild().espejo2();
+		}
+		if(this.hasRightChild()){
+			this.getLeftChild().espejo2();
+		}
+		
+	}
+
 	// 0<=n<=m
 	public void entreNiveles(int n, int m) {
 		if (this.isEmpty() || n < 0 || m < n) return;
