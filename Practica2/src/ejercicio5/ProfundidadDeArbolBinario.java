@@ -1,6 +1,6 @@
 package ejercicio5;
 import java.util.*;
-
+import Cola.Queue;
 import ejercicio1y2.BinaryTree;
 
 public class ProfundidadDeArbolBinario {
@@ -12,24 +12,31 @@ public class ProfundidadDeArbolBinario {
     public int sumaElementosProfundidad(int prof){
         BinaryTree<Integer> ab = null;
         Queue<BinaryTree<Integer>> cola = new Queue<BinaryTree<Integer>>();
-        cola.enqueue(this);
+        int suma = 0;
+        int profundidadActual = 0;
+        cola.enqueue(arbol);
         cola.enqueue(null);
-        while (!cola.isEmpty()) {
-        ab = cola.dequeue();
-        if (ab != null) {
-        System.out.print(ab.getData());
-        if (ab.hasLeftChild()) {
-        cola.enqueue(ab.getLeftChild());
+        while (!cola.isEmpty() && profundidadActual <= prof) {
+            ab = cola.dequeue();
+            if (ab != null) {
+                suma += ab.getData(); 
+            }
+            if (ab.hasLeftChild()) {
+                cola.enqueue(ab.getLeftChild());
+            }
+            if (ab.hasRightChild()) {
+                cola.enqueue(ab.getRightChild());
+            }
+        else{
+        profundidadActual++; 
+        if (!cola.isEmpty()) {
+            cola.enqueue(null);
+        }   
         }
-        if (ab.hasRightChild()) {
-        cola.enqueue(ab.getRightChild());
-        }
-        } else if (!cola.isEmpty()) {
-        System.out.println();
-        cola.enqueue(null);
-        }
+    
     }
- }
-        
-    }
+return suma;
 }
+        
+}
+
