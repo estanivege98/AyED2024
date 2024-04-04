@@ -1,6 +1,4 @@
 package ejercicio5;
-
-import java.util.LinkedList;
 import java.util.*;
 
 import ejercicio1y2.BinaryTree;
