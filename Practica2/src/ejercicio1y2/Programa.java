@@ -9,7 +9,7 @@ public class Programa {
         ab.getLeftChild().addLeftChild(new BinaryTree<Integer>(1));
         ab.getLeftChild().addRightChild(new BinaryTree<Integer>(3));
         ab.getRightChild().addLeftChild(new BinaryTree<Integer>(5));
-        ab.getRightChild().addRightChild(new BinaryTree<Integer>(8));
+        //ab.getRightChild().addRightChild(new BinaryTree<Integer>(8));
         
         System.out.println(ab.contarHojas());
         System.out.println("Arbol original: ");

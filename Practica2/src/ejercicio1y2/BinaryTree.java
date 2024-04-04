@@ -116,10 +116,10 @@ public class BinaryTree <T> {
 		this.addRightChild(this.getLeftChild());
 		this.addLeftChild(aux);
 		if(this.hasLeftChild()){
-			this.getRightChild().espejo2();
+			this.getLeftChild().espejo2();
 		}
 		if(this.hasRightChild()){
-			this.getLeftChild().espejo2();
+			this.getRightChild().espejo2();
 		}
 		
 	}
