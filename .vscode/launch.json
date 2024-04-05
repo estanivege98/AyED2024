@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "TestQueue",
+            "request": "launch",
+            "mainClass": "ejercicio8.TestQueue",
+            "projectName": "AyED2024_a44b8857"
+        },
+        {
+            "type": "java",
             "name": "TestRedBinariaLlena",
             "request": "launch",
             "mainClass": "ejercicio4.TestRedBinariaLlena",
