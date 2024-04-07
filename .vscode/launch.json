@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "TestBalanceo",
+            "request": "launch",
+            "mainClass": "ejercicio9.TestBalanceo",
+            "projectName": "AyED2024_4d257b3e"
+        },
+        {
+            "type": "java",
             "name": "TestProfundidadDeArbolBinario",
             "request": "launch",
             "mainClass": "ejercicio5.TestProfundidadDeArbolBinario",
