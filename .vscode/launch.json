@@ -6,6 +6,34 @@
     "configurations": [
         {
             "type": "java",
+            "name": "TestParcialArboles",
+            "request": "launch",
+            "mainClass": "Ejercicio9.TestParcialArboles",
+            "projectName": "AyED2024_4d257b3e"
+        },
+        {
+            "type": "java",
+            "name": "TestParcialArboles",
+            "request": "launch",
+            "mainClass": "Ejercicio8.TestParcialArboles",
+            "projectName": "AyED2024_4d257b3e"
+        },
+        {
+            "type": "java",
+            "name": "TestParcialArboles",
+            "request": "launch",
+            "mainClass": "Ejercicio7.TestParcialArboles",
+            "projectName": "AyED2024_4d257b3e"
+        },
+        {
+            "type": "java",
+            "name": "TestTransformacion",
+            "request": "launch",
+            "mainClass": "Ejercicio6.TestTransformacion",
+            "projectName": "AyED2024_4d257b3e"
+        },
+        {
+            "type": "java",
             "name": "TestBalanceo",
             "request": "launch",
             "mainClass": "ejercicio9.TestBalanceo",
