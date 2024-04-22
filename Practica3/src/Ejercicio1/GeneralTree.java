@@ -1,7 +1,9 @@
 package Ejercicio1;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import Cola.Queue;
 
 public class GeneralTree<T>{
 
@@ -57,17 +59,168 @@ public class GeneralTree<T>{
 			children.remove(child);
 	}
 	
-	public int altura() {	 
-			
-		return 0;
-	}
 	
+	
+
+	/* Ejercicio 2 B: Si ahora tuviera que implementar estos métodos en la clase GeneralTree<T>, 
+	¿qué modificaciones haría tanto en la firma como en la implementación de los mismos? */  
+	
+	/* Recorrido PreOrden */
+	public List<Integer> numerosImparesMayoresQuePreOrden (int n){
+        List<Integer> lista = new LinkedList<Integer>();
+        if (!this.isEmpty()){
+            this.preOrder(lista, n);
+        }
+        return lista;
+    }
+    private void preOrder(List<Integer> lista, int n){
+		int dato = (Integer) this.getData();
+        if ((dato % 2 != 0) && (dato > n)) lista.add(dato);
+        List<GeneralTree<T>> hijos = this.getChildren();
+        for (GeneralTree<T> h : hijos){
+            h.preOrder(lista, n);
+        }
+    }
+
+	/* Recorrido InOrden */
+	public ArrayList<Integer> numerosImparesMayoresQueInOrden (int n){
+        ArrayList<Integer> lista = new ArrayList<Integer>();
+        if (!this.isEmpty()){
+            this.inOrder(lista, n);
+        }
+        return lista;
+    }
+    private void inOrder(ArrayList<Integer> lista, int n){
+        // Obtener los hijos del nodo actual
+        List<GeneralTree<T>> hijos = this.getChildren();
+        if (this.hasChildren()) hijos.get(0).inOrder(lista, n);
+		int dato = (Integer) this.getData();
+        if ((dato % 2 != 0) && (dato > n)) lista.add(dato);
+        
+        for (int i = 1; i < hijos.size(); i++){ 
+            hijos.get(i).inOrder(lista, n);
+        }
+    }
+
+	/* Recorrido PostOrden */
+	public ArrayList<Integer> numerosImparesMayoresQuePostOrden (int n){
+        ArrayList<Integer> lista = new ArrayList<Integer>();
+        if (!this.isEmpty()){
+            this.postOrder(lista, n);
+        }
+        return lista;
+    }
+	private void postOrder(List<Integer> lista, int n){
+        List<GeneralTree<T>> hijos = this.getChildren();
+        for (GeneralTree<T> h : hijos){
+            h.preOrder(lista, n);
+        }
+		int dato = (Integer) this.getData();
+        if ((dato % 2 != 0) && (dato > n)) lista.add(dato);
+    }
+
+	/* Recorrido por niveles */
+	public List<Integer> porNiveles(GeneralTree<T> a, int n){
+		List<Integer> resul = new LinkedList<Integer>();
+		GeneralTree<T> aux;
+		Queue<GeneralTree<T>> queue = new Queue<GeneralTree<T>>();
+		queue.enqueue(this);
+		while (!queue.isEmpty()) {
+			aux = queue.dequeue();
+			if(!aux.isEmpty()){
+				int dato = (Integer) this.getData();
+				if ((dato % 2 != 0) && (dato > n)) resul.add(dato);
+			}
+			List<GeneralTree<T>> hijos = this.getChildren();
+			for (GeneralTree<T> h : hijos){
+				queue.enqueue(h);
+			}
+		}
+		return resul;
+	}
+
+	/* Ejercicio 3
+	 * Implemente en la clase GeneralTree los siguientes métodos
+		a) public int altura(): int devuelve la altura del árbol, es decir, la longitud del camino más largo
+		desde el nodo raíz hasta una hoja.
+		
+		b) public int nivel(T dato) devuelve la profundidad o nivel del dato en el árbol. El nivel de un nodo
+		es la longitud del único camino de la raíz al nodo.
+		
+		c) public int ancho(): int la amplitud (ancho) de un árbol se define como la cantidad de nodos que
+		se encuentran en el nivel que posee la mayor cantidad de nodos.
+	*/
+
+	public int altura(){
+		return (!this.isEmpty()) ? alturaHelper() : -1;
+	}
+	private int alturaHelper(){
+		if(this.isLeaf()) return 0;
+		else{
+			int alMax = -1;
+			List<GeneralTree<T>> hijos = this.getChildren();
+			for (GeneralTree<T> h : hijos){
+				alMax = Math.max(alMax, h.alturaHelper());
+			}
+			return alMax + 1;
+		}
+	} 
+
 	public int nivel(T dato){
-		return 0;
-	  }
+		if(this.isEmpty()){
+			return 0;
+		}
+		else return (!this.isLeaf() ? nivelHelper(dato) : 1);
+    }
+	private int nivelHelper(T dato){
+		Queue<GeneralTree<T>> queue = new Queue<GeneralTree<T>>();
+		queue.enqueue(this);
+		int prof = 0;
+		while (!queue.isEmpty()){
+			int levelSize = queue.size();
+			for (int i = 0; i < levelSize; i++){
+				GeneralTree<T> actual = queue.dequeue();
+				if (actual.getData().equals(dato)){
+					return prof; // Se encuentra el dato, devuelve la profundidad
+				}
+				// Agrega los hijos del nodo actual a la cola
+				for (GeneralTree<T> h : actual.getChildren()){
+					queue.enqueue(h);
+				}
+			}
+			prof++; // Incrementa la profundidad despues de explorer todos los nodos en el nivel actual 
+		}
+		return -1; // El dato no se encontro en el arbol
+	}
 
 	public int ancho(){
-		
-		return 0;
+		if(this.isEmpty()){
+			return 0;
+		}
+		else return (!this.isLeaf() ? anchoHelper() : 1); 
+	}
+	private int anchoHelper(){
+		int cantMax = 0;
+		int cantActual = 0;
+		GeneralTree<T> ab;
+		Queue<GeneralTree<T>> queue = new Queue<GeneralTree<T>>();
+		queue.enqueue(this);
+		queue.enqueue(null);
+		while(!queue.isEmpty()){
+			ab = queue.dequeue();
+			if(ab!=null){
+				List<GeneralTree<T>> hijos = this.getChildren();
+				for(GeneralTree<T> h : hijos){
+					queue.enqueue(h);
+					cantActual++;
+				}
+			}
+			else if(!queue.isEmpty()){
+				cantMax = Math.max(cantMax, cantActual);
+				cantActual = 0;
+				queue.enqueue(null);
+			}
+		}
+		return cantMax;
 	}
 }
