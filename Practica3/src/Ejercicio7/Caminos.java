@@ -8,7 +8,38 @@
  */
 
 package Ejercicio7;
-
+import java.util.*;
+import Ejercicio1.GeneralTree;
 public class Caminos {
 
+    private GeneralTree<Integer> ab;
+
+    public Caminos(GeneralTree<Integer> arb){
+        this.ab = arb;
+    }
+
+    public List<Integer> caminoAHojaMasLejana(){
+        if(ab.isEmpty()){
+            return null;
+        }
+        List<Integer> listaMax = new LinkedList<Integer>();
+        List<Integer> listaAct = new LinkedList<Integer>();
+        caminoMasLejano(ab,listaMax, listaAct);
+        return listaMax;
+    } 
+    private void caminoMasLejano(GeneralTree<Integer> ab,List<Integer> listaMax, List<Integer> listaAct){
+        listaAct.add(ab.getData());
+        if(!ab.isLeaf()){
+            for(GeneralTree<Integer> child : ab.getChildren()){
+                caminoMasLejano(child, listaMax, listaAct);
+                }
+            }
+            else if(listaAct.size() > listaMax.size()){
+                listaMax.removeAll(listaMax);
+                listaMax.addAll(listaAct);
+            }
+            listaAct.remove(listaAct.size()-1);
+        
+        
+    }
 }
