@@ -223,4 +223,45 @@ public class GeneralTree<T>{
 		}
 		return cantMax;
 	}
+
+	/* Ejercicio 5
+	Se dice que un nodo n es ancestro de un nodo m si existe un camino desde n a m. Implemente un
+	método en la clase GeneralTree con la siguiente firma: */
+	public boolean esAncestro(T a, T b){  /*devuelve true si el valor “a” es ancestro del valor “b”- */
+		if (this.isEmpty()){
+			return false;
+		}
+		else return ancestroBusqueda(this,a,b);
+	} 
+	// Método auxiliar recursivo para buscar el nodo con valor 'data' y verificar si es ancestro de 'b'
+	private boolean ancestroBusqueda(GeneralTree<T> nodo,T a, T b){
+		/* if (nodo == null) {
+			return false;
+		}*/ 
+		// Verifica si 'a' es ancestro de 'b' a partir del nodo actual
+		if(nodo.getData().equals(a)){
+			return ancestroHelper(nodo, b);
+		}
+		// Buscar en los hijos del nodo actual
+		for (GeneralTree<T> child : nodo.getChildren()){
+			if (ancestroBusqueda(child, a, b)){
+				return true;
+			}
+		}
+		return false;
+	}
+	// Método auxiliar recursivo para verificar si 'a' es ancestro de 'b'
+	private boolean ancestroHelper(GeneralTree<T> a, T b){
+		// Si 'a' es igual a 'b', entonces 'a' es ancestro de sí mismo
+		if(a.getData().equals(b)){
+			return true;
+		}
+		// Verificar si 'a' es ancestro de algún hijo de 'b'
+		for (GeneralTree<T> child : a.getChildren()){
+			if(ancestroHelper(child, b)){
+				return true;
+			}
+		}
+		return false;
+	}
 }
