@@ -6,6 +6,27 @@
     "configurations": [
         {
             "type": "java",
+            "name": "NavidadTest",
+            "request": "launch",
+            "mainClass": "Ejercicio8.NavidadTest",
+            "projectName": "AyED2024_4d257b3e"
+        },
+        {
+            "type": "java",
+            "name": "CaminosTest",
+            "request": "launch",
+            "mainClass": "Ejercicio7.CaminosTest",
+            "projectName": "AyED2024_4d257b3e"
+        },
+        {
+            "type": "java",
+            "name": "RedDeAguaTest",
+            "request": "launch",
+            "mainClass": "Ejercicio6.RedDeAguaTest",
+            "projectName": "AyED2024_4d257b3e"
+        },
+        {
+            "type": "java",
             "name": "TestParcialArboles",
             "request": "launch",
             "mainClass": "Ejercicio9.TestParcialArboles",
