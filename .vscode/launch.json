@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "ParcialArbolesTest",
+            "request": "launch",
+            "mainClass": "Ejercicio9.ParcialArbolesTest",
+            "projectName": "AyED2024_a44b8857"
+        },
+        {
+            "type": "java",
             "name": "NavidadTest",
             "request": "launch",
             "mainClass": "Ejercicio8.NavidadTest",
