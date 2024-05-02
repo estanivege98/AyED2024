@@ -15,12 +15,17 @@ public class ParcialArboles {
     }
     private static boolean esDeSeleccionHelper(GeneralTree<Integer> arbol){
         int valorMenor = Integer.MAX_VALUE;
-        if(!arbol.isLeaf()){
-            for(GeneralTree<Integer> hijo : arbol.getChildren()){
+
+        if(arbol.isLeaf()){
+            return true;}
+            else{for(GeneralTree<Integer> hijo : arbol.getChildren()){
                 valorMenor = Math.min(valorMenor, hijo.getData());
                 if(!esDeSeleccion(hijo)) return false;
+                
             }
         }
+            
+        
         return (valorMenor == arbol.getData());
     }
 }
