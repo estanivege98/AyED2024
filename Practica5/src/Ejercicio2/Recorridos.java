@@ -8,5 +8,6 @@ public class Recorridos<T> {
         camino.addLast(vertice.getData());
         List<Edge<T>> adyacentes = grafo.getEdges(vertice);
 
+        return camino;
     }
 }
