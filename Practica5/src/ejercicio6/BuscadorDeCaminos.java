@@ -22,22 +22,23 @@ public class BuscadorDeCaminos {
     }
 
     private void recorreBosque(Vertex<String> v1, boolean[] marca, List<List<String>> listaCaminos, List<String> camAct, Vertex<String> v2){
+        // v1 : casa caperucita
+        // v2 : casa abuelita
         marca[v1.getPosition()] = true;
         camAct.add(v1.getData());
-
-        if(v1.getData().equals(v2.getData())){
-            listaCaminos.add(new LinkedList<String>(camAct));
-        }
-        else{
-            for (Edge<String> edge : this.bosque.getEdges(v1)){
-                Vertex<String> destino = edge.getTarget();
-                if (!marca[destino.getPosition()]){
-                    recorreBosque(v1, marca, listaCaminos, camAct, v2);
+        if(!v1.getData().equals(v2.getData())) {
+            List<Edge<String>> adyacentes = this.bosque.getEdges(v1);
+            for (Edge<String> edge : adyacentes) {
+                Vertex<String> v = edge.getTarget();
+                if (!marca[v.getPosition()] && edge.getWeight() < 5) {
+                    recorreBosque(v, marca, listaCaminos, camAct, v2);
                 }
             }
         }
-
-        camAct.removeLast();
+        else{
+            listaCaminos.add(new LinkedList<String>(camAct));
+        }
         marca[v1.getPosition()] = false;
+        camAct.removeLast();
     }
 }
