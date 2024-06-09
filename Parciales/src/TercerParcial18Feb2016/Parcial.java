@@ -1,5 +1,5 @@
 package TercerParcial18Feb2016;
-import Ejercicio1.GeneralTree;
+import GeneralTree.GeneralTree;
 import java.util.*;
 import Cola.Queue;
 public class Parcial {

@@ -1,7 +1,7 @@
 package TercerParcial18Feb2016;
 import java.util.*;
-import Ejercicio1.GeneralTree;
-import Cola.Queue;
+import GeneralTree.GeneralTree;
+
 public class Prueba {
     public static void main(String[] args) {
 
@@ -13,14 +13,14 @@ public class Prueba {
         children1.add(new GeneralTree<>(letra2));
         children1.add(new GeneralTree<>(letra3));
         children1.add(new GeneralTree<>(letra4));
-        GeneralTree<Letranumero> ab1 = new GeneralTree<>(letra, children1);
+        GeneralTree<Letranumero> ab1 = new GeneralTree<Letranumero>(letra, children1);
 
 
         Letranumero letra5 = new Letranumero("F", 2);
         List<GeneralTree<Letranumero>> children2 = new LinkedList<GeneralTree<Letranumero>>();
         Letranumero letra6 = new Letranumero("D", 10);
         children2.add(new GeneralTree<Letranumero>(letra6));
-        GeneralTree<Letranumero> ab2 = new GeneralTree<>(letra5, children2);
+        GeneralTree<Letranumero> ab2 = new GeneralTree<Letranumero>(letra5, children2);
 
         Letranumero letra7 = new Letranumero("J", 4);
         List<GeneralTree<Letranumero>> children3 = new LinkedList<GeneralTree<Letranumero>>();
@@ -28,14 +28,14 @@ public class Prueba {
         Letranumero letra9 = new Letranumero("I", 10);
         children3.add(new GeneralTree<Letranumero>(letra8));
         children3.add(new GeneralTree<Letranumero>(letra9));
-        GeneralTree<Letranumero> ab3 = new GeneralTree<>(letra7, children3);
+        GeneralTree<Letranumero> ab3 = new GeneralTree<Letranumero>(letra7, children3);
 
         Letranumero letra10 = new Letranumero("G", 1);
         List<GeneralTree<Letranumero>> children4 = new LinkedList<GeneralTree<Letranumero>>();
         children4.add(ab1);
         children4.add(ab2);
         children4.add(ab3);
-        GeneralTree<Letranumero> a1 = new GeneralTree<>(letra10, children4);
+        GeneralTree<Letranumero> a1 = new GeneralTree<Letranumero>(letra10, children4);
 
         Parcial par = new Parcial();
 
