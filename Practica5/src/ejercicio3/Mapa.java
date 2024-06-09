@@ -34,32 +34,51 @@ public class Mapa {
         List<String> camino = new ArrayList<String>();
         Vertex<String> v1 = this.mapaCiudades.search(ciudad1);
         Vertex<String> v2 = this.mapaCiudades.search(ciudad2);
+        Vertex<String> v3;
         boolean[] visitados = new boolean[this.mapaCiudades.getSize()];
         if(v1 != null && v2 != null){
-            devolverCaminoHelper(v1, v2, visitados, camino);
+            boolean[] visitados2 = new boolean[this.mapaCiudades.getSize()];
+            v3 = buscarCiudad(v1, ciudad1, visitados2);
         }
+        else{
+            return new ArrayList<>();
+        }
+        buscarCiudad2(v3, ciudad2, visitados, camino);
         return camino;
     }
-    private boolean devolverCaminoHelper(Vertex<String> v1, Vertex<String> v2, boolean[] visitados, List<String> camino){
-        visitados[v1.getPosition()] = true;
-        camino.add(v1.getData());
-        if (v1 == v2) {
-            return false;
+    private Vertex<String> buscarCiudad(Vertex<String> v, String ciudad, boolean[] visitados){
+        visitados[v.getPosition()] = true;
+        if(v.getData().equals(ciudad)){
+            return v;
         }
-        boolean paro = false;
-        if(!v1.getData().equals(v2.getData()) && !paro){
-            List<Edge<String>> adyacentes = this.mapaCiudades.getEdges(v1);
-            for (Edge<String> edge : adyacentes) {
-                Vertex<String> v = edge.getTarget();
-                if(!visitados[v.getPosition()]){
-                    paro = devolverCaminoHelper(v, v2, visitados, camino);
+        List<Edge<String>> adyacentes = this.mapaCiudades.getEdges(v);
+        for (Edge<String> edge : adyacentes) {
+            Vertex<String> v2 = edge.getTarget();
+            if(!visitados[v2.getPosition()]){
+                buscarCiudad(v2, ciudad, visitados);
+            }
+        }
+        return v;
+    }
+    private boolean buscarCiudad2(Vertex<String> v, String ciudad, boolean[] visitados, List<String> camino){
+        visitados[v.getPosition()] = true;
+        camino.add(v.getData());
+        if(v.getData().equals(ciudad)){
+            return true;
+        }
+        List<Edge<String>> adyacentes = this.mapaCiudades.getEdges(v);
+        for (Edge<String> edge : adyacentes) {
+            Vertex<String> v2 = edge.getTarget();
+            if(!visitados[v2.getPosition()]){
+                boolean encuentra = buscarCiudad2(v2, ciudad, visitados, camino);
+                if (encuentra){
+                    return true;
                 }
             }
         }
-        if (paro) return false;
-
         camino.removeLast();
-        return true;
+        return false;
     }
+
 
 }
