@@ -39,7 +39,7 @@ public class Prueba {
 
         Parcial par = new Parcial();
 
-        List<String> lista = par.devolverCamino(a1);
+        List<String> lista = par.devolverCaminoIterativo(a1);
         for (String s : lista) {
             System.out.println(s);
         }
