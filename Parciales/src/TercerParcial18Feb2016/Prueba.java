@@ -37,9 +37,9 @@ public class Prueba {
         children4.add(ab3);
         GeneralTree<Letranumero> a1 = new GeneralTree<Letranumero>(letra10, children4);
 
-        Parcial par = new Parcial();
+        ParcialRecursivo par = new ParcialRecursivo();
 
-        List<String> lista = par.devolverCaminoIterativo(a1);
+        List<String> lista = par.devolverCamino(a1);
         for (String s : lista) {
             System.out.println(s);
         }
